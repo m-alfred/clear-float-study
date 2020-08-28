@@ -1,0 +1,50 @@
+div {
+  box-sizing: border-box;
+}
+ol li, ul li {
+  margin-bottom: 10px;
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+#app {
+  margin: 0 auto;
+  width: 800px;
+  padding: 10px;
+}
+.mark {
+  background-color: yellow;
+}
+.example-pic {
+  max-width: 100%;
+}
+.box1, .box2, .box3 {
+  width: 50px;
+  height: 50px;
+  border: solid 1px #000;
+}
+.box1 {
+  background-color: #f00;
+}
+.box2 {
+  background-color: #0f0;
+}
+.box3 {
+  background-color: #00f;
+}
+
+.tip {
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+.bfc-wrap {
+  overflow: hidden;
+}
