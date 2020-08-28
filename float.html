@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浮动研究</title>
+  <link rel="stylesheet" type="text/css" href="./common.css">
+  <link rel="stylesheet" type="text/css" href="./float.css">
+</head>
+<body>
+  <div id="app">
+    <h4 >
+      浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。<br>
+      由于浮动框不在文档的普通流中，所以文档的普通流中的块框表现得就像浮动框不存在一样。
+    </h4>
+    <div style="color: chocolate;">红：box1 绿：box2 蓝：box3</div>
+    <h3 >1. 无浮动</h3>
+    <div class="con1">
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+    </div>
+    <hr >
+    <h3 >2. box1左浮动 脱离文档</h3>
+    <div class="con2">
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+    </div>
+    <hr >
+    <h3 >3. 三个box左浮动</h3>
+    <div class="con3">
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+    </div>
+    <hr >
+    <h3 >4. 容器宽度减小，box3被挤到第二排</h3>
+    <div class="con4">
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+    </div>
+    <hr >
+    <h3 >5. 容器宽度减小，box1高度较box3大，box3被挤到第二排后面</h3>
+    <div class="con5">
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+    </div>
+    <hr >
+    <h3 >6. 容器宽度减小，box1高度较box3小，box3被挤到第二排</h3>
+    <div class="con6">
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+    </div>
+    <hr >
+    <h3 >7. 元素文字环绕，浮动框旁边的行框被缩短</h3>
+    <div class="con7">
+      <div class="box1"></div><div >文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕</div>
+    </div>
+    <hr >
+    <h3 >8. 阻止行框围绕浮动框，清除左边浮动，可以看到clear-left元素不再贴着浮动的box1</h3>
+    <div class="tip">clear 属性规定元素的哪一侧不允许其他浮动元素。</div>
+    <div class="tip">MDN clear解释：指定一个元素是否必须移动(清除浮动后)到在它之前的浮动元素下面。clear 属性适用于浮动和非浮动元素。</div>
+    <div class="con8">
+      <div class="box1"></div><div >文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕</div>
+      <div class="clear-left">文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕</div>
+    </div>
+    <hr >
+    <h3 >9. 浮动元素脱离文档，不占据空间，父级元素没有被撑开</h3>
+    <div class="con9">
+      <div class="box1"></div><div class="text">文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕</div>
+    </div>
+    <a style="padding-bottom: 20px;" href="./clear-float.html">清除浮动方式</a>
+  </div>
+
+</div>
+</body>
+</html>
