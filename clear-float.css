@@ -1,0 +1,94 @@
+.clearfix-block:before, .clearfix-block:after {
+  content: "";
+  display: block;
+}
+.clearfix-block:after {
+  clear: both;
+}
+
+.con10 {
+  background-color: #ccc;
+  width: 300px;
+  text-align: justify;
+}
+
+.con10 .box1 {
+  float: left;
+}
+.con10 .text  {
+  float: right;
+  width: 240px;
+}
+
+.con10 .box1 {
+  height: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.con10 .clear {
+  clear: both;
+}
+
+.con11 {
+  background-color: #ccc;
+  width: 300px;
+  text-align: justify;
+  overflow: hidden;
+}
+
+.con11 .box1 {
+  float: left;
+}
+.con11 .text  {
+  float: right;
+  width: 240px;
+}
+
+.con11 .box1 {
+  height: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.con12 {
+  background-color: #ccc;
+  width: 300px;
+  text-align: justify;
+}
+
+.con12 .box1 {
+  float: left;
+}
+.con12 .text  {
+  float: right;
+  width: 240px;
+}
+
+.con12 .box1 {
+  height: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.con13 {
+  background-color: #ccc;
+  width: 300px;
+  text-align: justify;
+}
+
+.con13 .box1 {
+  float: left;
+}
+.con13 .text  {
+  float: right;
+  width: 240px;
+}
+
+.con13 .box1 {
+  height: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.con13 .box2 {
+  margin: 50px;
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS清除浮动研究</title>
+  <style type="text/css"></style>
+  <link rel="stylesheet" type="text/css" href="./common.css">
+  <link rel="stylesheet" type="text/css" href="./clear-float.css">
+</head>
+<body>
+  <div id="app">
+    <div class="tip">clear 属性规定元素的哪一侧不允许其他浮动元素。</div>
+    <div class="tip">MDN clear解释：指定一个元素是否必须移动(清除浮动后)到在它<span 
+      style="color: #f00; font-weight: bold;">之前的浮动元素</span>（所以只能通过after，而不能通过before清除浮动）下面。clear 属性适用于浮动和非浮动元素。</div>
+    <div class="tip">clear属性只能用于块级元素。</div>
+    <h3 >10. 新增空元素清除浮动</h3>
+    <div class="con10">
+      <div class="box1"></div><div class="text">文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕</div>
+      <div class="clear"></div>
+    </div>
+    <hr >
+    <a id="BFC">
+      <h3 >11. <a href="./bfc.html">BFC</a>清除浮动</h3>
+    </a>
+    <div class="con11">
+      <div class="box1"></div><div class="text">文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕</div>
+    </div>
+    <hr >
+    <h3 >12. 伪元素清除浮动</h3>
+    <!-- 此处设置BFC防止子元素内浮动造成页面混乱 -->
+    <div style="overflow: auto;">
+      <div style="margin-bottom: 10px;">
+        <button id="btnClearDirect" >改变伪元素clear</button><span id="clearDirect" style="margin-left: 10px;">当前clear both</span>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <button id="btnSetText" >调整右侧文字高度</button>
+      </div>
+      <div class="con12 clearfix">
+        <div class="box1"></div><div class="text">文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕</div>
+        <!-- box2会被浮动的box1覆盖 -->
+        <div class="box2"></div>
+      </div>
+  
+    </div>
+    
+    <h3 >13. 为什么伪元素要设置display: table而不是display: block</h3>
+    绿色盒子为非浮动元素
+    <h4 >display: table</h4>
+    <div class="con13 clearfix">
+      <div class="box2">box2</div>
+    </div>
+
+    <h4 >display: block</h4>
+    可以看到box2的外边距没有撑开父元素，感觉就像是父元素设置了外边距, 详见<a href="./margin-collapsing.html#parent">外边距折叠-没有内容将父元素和后代元素分开
+    </a>
+    <div class="con13 clearfix-block">
+      <div class="box2">box2</div>
+    </div>
+
+    <h3>14. 为什么clear:both是设置在after伪元素而不是before伪元素上</h3>
+      因为清除浮动只能清除同一BFC中在它前面的元素的浮动
+  </div>
+  <script >
+    /**
+   * 在文档中添加一条样式表规则（这可能是动态改变 class 名的更好的实现方法，
+   * 使得 style 样式内容可以保留在真正的样式表中，以斌面添加额外的元素到 DOM 中）。
+   * 注意这里有必要声明一个数组，因为 ECMAScript 不保证对象按预想的顺序遍历，
+   * 并且 CSS 也是依赖于顺序的。
+   * 类型为数组的参数 decls 接受一个 JSON 编译的数组。
+   * @example
+  addStylesheetRules([
+    ['h2', // 还接受第二个参数作为数组中的数组
+      ['color', 'red'],
+      ['background-color', 'green', true] // 'true' for !important rules 
+    ], 
+    ['.myClass', 
+      ['background-color', 'yellow']
+    ]
+  ]);
+   */
+  function addStylesheetRules (decls) {
+      var style = document.createElement('style');
+      document.getElementsByTagName('head')[0].appendChild(style);
+      if (!window.createPopup) { /* For Safari */
+         style.appendChild(document.createTextNode(''));
+      }
+      var s = document.styleSheets[document.styleSheets.length - 1];
+      for (var i=0, dl = decls.length; i < dl; i++) {
+          var j = 1, decl = decls[i], selector = decl[0], rulesStr = '';
+          if (Object.prototype.toString.call(decl[1][0]) === '[object Array]') {
+              decl = decl[1];
+              j = 0;
+          }
+          for (var rl=decl.length; j < rl; j++) {
+              var rule = decl[j];
+              rulesStr += rule[0] + ':' + rule[1] + (rule[2] ? ' !important' : '') + ';\n';
+          }
+  
+          if (s.insertRule) {
+            console.log('xx:', selector + '{' + rulesStr + '}', s.cssRules.length);
+            
+              s.insertRule(selector + '{' + rulesStr + '}', s.cssRules.length);
+          }
+          else { /* IE */
+              s.addRule(selector, rulesStr, -1);
+          }
+      }
+  }
+  </script>
+  <script >
+    const btnClearDirect = document.querySelector('#btnClearDirect');
+    const clearDirect = document.querySelector('#clearDirect');
+    const propArr = ['left', 'right', 'both'];
+    let idx = 0;
+    btnClearDirect.addEventListener('click', function() {
+      let btnText = '当前clear '
+      const styleSheet = document.styleSheets[0];
+      clearDirect.innerHTML = btnText + propArr[idx];
+      // styleSheet.insertRule(
+      //   `.con12:after { clear: ${propArr[idx]} !important}`,
+      //    styleSheet.cssRules.length
+      //   )
+      addStylesheetRules([
+        [
+          '.con12:after', ['clear', `${propArr[idx]}`]
+        ]
+      ])
+      idx ++;
+      if (idx >= propArr.length) {
+        idx = 0;
+      }
+    }, false)
+
+    const btnSetText = document.getElementById('btnSetText');
+    const text = document.querySelector('.con12 .text');
+    let initText = text.innerHTML;
+    const textArr = [
+      '文字环绕文字环绕文字环绕文字环绕文字环绕文字环绕',
+      initText
+    ]
+    let idx2 = 0;
+    btnSetText.addEventListener('click', function() {
+      text.innerHTML = textArr[idx2]
+      idx2 ++;
+      if (idx2 >= textArr.length) {
+        idx2 = 0;
+      }
+    }, false);  
+  </script>
+</body>
+</html>
