@@ -1,0 +1,19 @@
+.overlap-example .box {
+  width: 200px;
+  height: 200px;
+  border: solid 1px #000;
+  margin: 20px 0;
+}
+
+.two-col-example .left {
+  width: 100px;
+  height: 80px;
+  float: left;
+  background-color: #f00;
+}
+
+
+.two-col-example .right {
+  height: 200px;
+  background-color: #0f0;
+}
